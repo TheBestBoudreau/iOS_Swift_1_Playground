@@ -23,14 +23,14 @@ namedPersonTuple.age
  - Experiment:
  Try creating your own tuple. Mix in different variable types and try mixing some parameters with names and some without. Does it still work?
  */
-
+var myTuple =   ("Brian", "turnip", "beef", age : 24, anotherAge: 56)
 
 /*:
  - Experiment:
  Try nesting tuples within one another. Create a tuple and add a tuple as one of its items.
  */
-
-
+var anotherTuple = ("Mitch","Ray","Hello World")
+var addTuple = ("Peterson", "Lamppost", anotherTuple)
 /*:
  - Experiment:
  We took a look at tuple earlier during the 'Loops' section. Can you tell where it is being used? Experiment with the tuple names and even change up the interesting numbers to see what's possible.
@@ -42,7 +42,7 @@ let interestingNumbers = [
     "Square": [1, 4, 9, 16, 25],
 ]
 for (kind, numbers) in interestingNumbers {
-    
+    print("\(kind) \(numbers)")
 }
 
 /*:
@@ -52,7 +52,12 @@ for (kind, numbers) in interestingNumbers {
 To test: call your new function with eligable true and false, and print the two values
  (Hint: Use optional return value and conditional unwrapping)
  */
+func myFunction(name : String , age : Int, eligable : Bool) -> (String? , Int?) {
+    if eligable == true {
+        return (name , age)
+    }
 
+myFunction(name: "Kevin", age: 23, eligable: true)
 
 /*:
  ## Enums
@@ -68,12 +73,33 @@ enum Months: Int{
     case March
     case April
     case May, June, July, August
-    //...
-    
+    case September
+    case October
+    case December
     func abbreviatedStringForm() -> String {
         switch self {
-            default:
-                return ""
+        case .January:
+            return "Jan"
+        case .Feburary:
+            return "Feb"
+        case .March:
+            return "Mar"
+        case .April:
+            return "Apr"
+        case .May:
+            return "May"
+        case .June:
+            return "June"
+        case .July:
+            return "July"
+        case .August:
+            return "Aug"
+        case .September:
+            return "Sept"
+        case .October:
+            return "Oct"
+        case .December:
+            return "Dec"
         }
     }
 }
@@ -88,24 +114,46 @@ let marchMonth = Months.March
  \
 Try removing the '= 1' from the Months enum. Now what is different?
  */
-
+Months.January.rawValue
+Months.March.rawValue
 
 /*:
  - Experiment:
  Finish the rest of the months for our `Months` enum. Then take a look at `abbreviatedStringForm()` function. Complete this function so that it returns the abbreviated form of the desired month as a String. ie: calling `Months.January.abbreviatedStringForm()` returns "Jan".
  */
+Months.January.abbreviatedStringForm()
 
 
 /*:
  - Experiment:
  Write a function within the enum that compares two months and determines how many months are they apart. For example: Comparing January to March would return to me '2', because January and March are two months apart.
  */
-
+    func calculateMonths ( month1 : Months.RawValue , month2 : Months.RawValue) -> Int{
+      return month2 - month1
+}
 
 /*:
  - Callout(Challenge):
  Create enums for the game "Rock, Paper, Scissors". Create a function within the enum that compares two hand shapes and determines the winner. Then create a function that returns ✋ , ✌️, or 👊 given rock, paper, or scissors.
 */
+    enum rockPaperScissors : String {
+        case rock = "👊"
+        case paper = "✋"
+        case scissors = "✌️"
+        
+        
+        func play (rps : rockPaperScissors) -> String{
+            switch (self, rps){
+            case (.rock , .scissors), (.paper , .rock) , (.scissors, .paper):
+                return self.rawValue
+            case (.rock , .paper) , (.paper , .scissors) , (.scissors, .rock):
+                return self.rawValue
+            default:
+                return self.rawValue
+            }
+        }
+        
+}
 
 
 //: [Next](@next)

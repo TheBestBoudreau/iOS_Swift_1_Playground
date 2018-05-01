@@ -19,19 +19,29 @@ myDictionary["Principal"] = 1
  - Experiment:
  Try creating an array and dictionary using `'let'` vs `'var'` then try adding something to them. What do you notice? For the array, you can use a method called 'append' to add something to it.
  */
+let myArr = [1,2,3]
+var myArr2 = [1,2,3]
 
+let myDict = ["Students" : 1, "Teachers" : 2]
+var myDict2 = ["Studens" : 1, "Teachers" : 2]
 
+myArr.append(4)
+myArr2.append(4)
+
+myDict["Principle"] = 3
+myDict2["Principle"] = 3
 /*:
  - Experiment:
  Try creating an empty array with an explicit type `[type]`. What happens when you add a value that isn't the same type?
  */
-
+var myNewArr: Array <Int>! = [1,2,3]
+myNewArr.append("Hello")
 
 /*:
  - Experiment:
  Try creating an empty dictionary with an explicit type. `[keyType: valueType]`
  */
-
+var myNewDict: [String: Int] = ["String" : 1, "Another String" : 2]
 
 /*:
  - Experiment:
@@ -43,7 +53,13 @@ myDictionary["Principal"] = 1
  - reverse
  - count
  */
-
+var anotherArr = [1,2,3]
+anotherArr.append(1)
+anotherArr.insert(1, at: 2)
+anotherArr.remove(at: 2)
+anotherArr.removeAll()
+anotherArr.reverse()
+anotherArr.count
 
 /*:
  - Experiment:
@@ -52,16 +68,22 @@ myDictionary["Principal"] = 1
  - isEmpty
  - count
  */
-
-
+var anotherDict = ["String1" : 1, "String2" : 2,]
+anotherDict.removeValue(forKey: "String1")
+anotherDict.isEmpty
+anotherDict.count
 /*:
  - Callout(Challenge):
     Declare a mutable array that is empty and holds `Strings`. On the next few lines, add the following names to the array: John, Karen, Jane
  
     Finally, print out each person's name from the array using their index and string interpolation
 */
+var mutableArray : [String]
+mutableArray.append("John")
+mutableArray.append("Karen")
+mutableArray.append("Jane")
 
-
+print("\(mutableArray [1]),\(mutableArray [2]), \(mutableArray [3])")
 /*:
  - Callout(Challenge):
   Declare a mutable dictionary with the following names and their salaries
@@ -74,6 +96,7 @@ myDictionary["Principal"] = 1
  
     On the next line, add this last person's info: Bob - $45000
  */
-
+var anotherAnotherDict : Dictionary <String, Int>! = ["John" : 50000, "Jane" : 70000, "Karen" : 62000]
+anotherAnotherDict["Bob"] = 45000
 
 //: [Next](@next)
